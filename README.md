@@ -198,6 +198,7 @@ Example calls:
 _This first example asks for estimates at the surface ocean at the equator/prime meridian in the years 2000 and 2200 assuming SSP5_3.4_over is followed_
 
 [Canth]=TRACEv1([0 0 0;0 0 0],[2000;2200],[35 20;35 20],[1 2],[9],[0])
+
 _Results in_
 Canth =
 
@@ -207,6 +208,7 @@ Canth =
 _This second example demonstrates a function call performed without providing temperature information, which is not recommended and should result in a warning_
 
 [Canth]=TRACEv1([0 0 0;0 0 0],[2000;2010],[35;35],[1],[1],[0])
+
 _Results in_
 Warning: TRACE was called either without providing temperature or without
 specifying which column of PredictorMeasurements contains temperature.
