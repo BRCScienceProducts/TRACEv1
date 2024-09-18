@@ -200,6 +200,7 @@ _This first example asks for estimates at the surface ocean at the equator/prime
 [Canth]=TRACEv1([0 0 0;0 0 0],[2000;2200],[35 20;35 20],[1 2],[9],[0])
 
 _Results in_
+
 Canth =
 
    45.8414
@@ -210,6 +211,7 @@ _This second example demonstrates a function call performed without providing te
 [Canth]=TRACEv1([0 0 0;0 0 0],[2000;2010],[35;35],[1],[1],[0])
 
 _Results in_
+
 Warning: TRACE was called either without providing temperature or without
 specifying which column of PredictorMeasurements contains temperature.
 Temperature is therefore being estimated from salinity and coordinate information,
