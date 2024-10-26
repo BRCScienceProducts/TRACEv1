@@ -265,6 +265,13 @@ end
 % estimates will be returned for these coordinates.
 NaNGridCoords=max(isnan(OutputCoordinates),[],2) | isnan(Dates);
 
+% This step checks for negative depths.  If found, it changes them to
+% positive depths and issues a warning.
+if min(OutputCoordinates(~NaNGridCoords,3))<0
+    OutputCoordinates(~NaNGridCoords,3)=abs(OutputCoordinates(~NaNGridCoords,3));
+    warning('TRACE: Negative depths were detected and changed to positive values.')
+end
+
 % Doing a size check for the coordinates.
 if ~(size(OutputCoordinates,2)==3)
     error('OutputCoordinates has either too many or two few columns.  This version only allows 3 columns with the first being longitude (deg E), the second being latitude (deg N), and the third being depth (m).');
@@ -384,7 +391,7 @@ PrefProps.Preformed_P=NaN(size(OutputCoordinates,1),1);
 % Allocating
 Ages(~NaNGridCoords)=Age;
 Canth(~NaNGridCoords)=CanthSub;
-Uncertainty=(4.6^2+1.1^2+(0.15*Canth).^2).^(0.5);
+Uncertainty=(4.4^2+2^2+(0.15*Canth).^2).^(0.5);
 PrefProps.Preformed_TA(~NaNGridCoords,1)=PrefPropsSub.Preformed_TA;
 PrefProps.Preformed_Si(~NaNGridCoords,1)=PrefPropsSub.Preformed_Si;
 PrefProps.Preformed_P(~NaNGridCoords,1)=PrefPropsSub.Preformed_P;
