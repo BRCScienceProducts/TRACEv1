@@ -203,8 +203,8 @@ _Results in_
 
 Canth =
 
-   45.8414
-   80.2198
+   49.2636
+   79.6467
 
 _This second example demonstrates a function call performed without providing temperature information, which is not recommended and should result in a warning_
 
@@ -214,12 +214,13 @@ _Results in_
 
 Warning: TRACE was called either without providing temperature or without
 specifying which column of PredictorMeasurements contains temperature.
-Temperature is therefore being estimated from salinity and coordinate information,
-but this is not optimal and the validation for TRACE should not be considered
-appropriate for the estimates returned from this function call. 
-> In TRACEv1 (line 318) 
+Temperature is therefore being estimated from salinity and coordinate
+information, but this is not optimal and the validation for TRACE should
+not be considered appropriate for the estimates returned from this
+function call. 
+> In TRACEv1 (line 325) 
 
 Canth =
 
-   53.8992
-   64.0482
+   56.4181
+   66.7979
