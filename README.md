@@ -203,8 +203,8 @@ _Results in_
 
 Canth =
 
-   49.2636
-   79.6467
+   47.7869
+   79.8749
 
 _This second example demonstrates a function call performed without providing temperature information, which is not recommended and should result in a warning_
 
@@ -222,5 +222,5 @@ function call.
 
 Canth =
 
-   56.4181
-   66.7979
+   56.0591
+   66.4567
