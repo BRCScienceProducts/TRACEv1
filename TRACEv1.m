@@ -2,7 +2,9 @@ function [Canth,PrefProps,Ages,Uncertainty]=TRACEv1(OutputCoordinates,Dates,...
     PredictorMeasurements,PredictorTypes,AtmCO2Trajectory,...
             varargin)                                     % Optional inputs
 %  TRansit-time-distribution-based Anthropogenic Carbon Estimation (TRACE)
-%  Version 1.0 (Version at time of submission)
+%  Version 1.01 (Version at time of resubmission)
+%  1.01 update includes fix to mu and lambda, but the code is still called
+%  TRACEv1
 %  
 %  This code generates etimates of ocean anthropogenic carbon content from
 %  user-supplied inputs of coordinates (lat, lon, depth), salinity,
@@ -361,7 +363,7 @@ CO2Rec(1,1)=-10^10; % Setting ancient CO2 to preindustrial placeholder
 
 % Building the histograms
 x=0.01:0.01:5;
-pf=makedist('InverseGaussian','mu',1,'lambda',1/1.3); % lambda should perhaps be 1/1.3 from He et al Schwinger paper
+pf=makedist('InverseGaussian','mu',3.4,'lambda',1); 
 y=pdf(pf,x);
 NumVal=size(C,1);
 Ventilation=y/sum(y);
