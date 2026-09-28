@@ -373,7 +373,7 @@ CO2Set=CO2Set'*Ventilation';
 Age=(SFs.SFs(:,1,1)*[1:500])*Ventilation';
 
 % Vapor correction term
-VPWP = exp(24.4543 - 67.4509.*(100./(293.15+MAll(:,2))) - 4.8489.*log((293.15+MAll(:,2))./100));
+VPWP = exp(24.4543 - 67.4509.*(100./(273.15+MAll(:,2))) - 4.8489.*log((273.15+MAll(:,2))./100));
 VPCorrWP = exp(-0.000544.*MAll(:,1));
 VPSWWP = VPWP.*VPCorrWP;
 VPFac=1-VPSWWP;
