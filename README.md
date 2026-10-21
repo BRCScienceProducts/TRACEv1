@@ -1,7 +1,8 @@
 # TRACEv1 (for MATLAB)
 
 Tracer-based Rapid Anthropogenic Carbon Estimation (TRACE)
-Version 1.1
+Version 1.2 (following bugfix for water vapor correction and edits to documentation)
+Version 1.1 release
 
 *see also [TRACE for Python](https://github.com/d-sandborn/TRACE)*
 
@@ -157,8 +158,7 @@ A n by e array of uncertainty estimates specific to the coordinates, parameter m
 Missing data: should be indicated with a NaN.  A NaN coordinate will yield NaN estimates for all equations at that coordinate.  A NaN parameter value will yield NaN estimates for all equations that require that parameter.
 
 *************************************************************************
-Please send questions or related requests to brendan.carter@noaa.gov or
-brendan.carter@gmail.com.
+Please send questions or related requests to brc.oceans@gmail.com
 *************************************************************************
 
 ## Example calls
