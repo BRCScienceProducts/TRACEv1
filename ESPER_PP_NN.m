@@ -140,7 +140,7 @@ function [Estimates]= ...
 % that parameter.
 % 
 % *************************************************************************
-% Please send questions or related requests to brendan.carter@gmail.com.
+% Please send questions or related requests to brc.oceans@gmail.com.
 % *************************************************************************
 
 % Parsing inputs, setting defaults, and sanity checking inputs.

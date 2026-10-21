@@ -163,7 +163,7 @@ function [Estimates]= ...
 % that parameter.
 % 
 % *************************************************************************
-% Please send questions or related requests to brendan.carter@gmail.com.
+% Please send questions or related requests to brc.oceans@gmail.com.
 % *************************************************************************
 
 DesiredVariables=1; % This routine only estimates ScaleFactors so this input is not needed

@@ -2,9 +2,11 @@ function [Canth,PrefProps,Ages,Uncertainty]=TRACEv1(OutputCoordinates,Dates,...
     PredictorMeasurements,PredictorTypes,AtmCO2Trajectory,...
             varargin)                                     % Optional inputs
 %  TRansit-time-distribution-based Anthropogenic Carbon Estimation (TRACE)
-%  Version 1.01 (Version at time of resubmission)
-%  1.01 update includes fix to mu and lambda, but the code is still called
-%  TRACEv1
+%  Version 1.2
+%  1.01  (Version at time of resubmission) update includes fix to mu and
+%  lambda, but the code is still called TRACEv1
+%  1.2 contains a fix to the temperature conversion term in the water
+%  vapor correction and some updates to documentation, still called TRACEv1
 %  
 %  This code generates etimates of ocean anthropogenic carbon content from
 %  user-supplied inputs of coordinates (lat, lon, depth), salinity,
@@ -186,8 +188,7 @@ function [Canth,PrefProps,Ages,Uncertainty]=TRACEv1(OutputCoordinates,Dates,...
 % that parameter.
 % 
 % *************************************************************************
-% Please send questions or related requests to brendan.carter@noaa.gov or
-% brendan.carter@gmail.com.
+% Please send questions or related requests to brc.oceans@gmail.com
 % *************************************************************************
 % Parsing inputs, setting defaults, and sanity checking inputs.
 %
@@ -368,8 +369,18 @@ y=pdf(pf,x);
 NumVal=size(C,1);
 Ventilation=y/sum(y);
 SigVent=Ventilation>0.01; % Disregarding all ventilations that are less than 1% for computational efficiency
-CO2Set=interp1(CO2Rec(:,1),CO2Rec(:,1+AtmCO2Trajectory),Dates-SFs.SFs(:,1,1)*[1:500])';
-CO2Set=CO2Set'*Ventilation';
+CO2Set=NaN(size(SFs.SFs,1),1);
+for iter=1:ceil(size(SFs.SFs,1)/100000)
+    if iter==ceil(size(SFs.SFs,1)/100000)
+        Inds=(iter-1)*100000+1:size(SFs.SFs,1);
+        CO2SetSub=interp1(CO2Rec(:,1),CO2Rec(:,1+AtmCO2Trajectory),Dates(Inds,:)-SFs.SFs(Inds,1,1)*[1:500])';
+        CO2Set(Inds,:)=CO2SetSub'*Ventilation';
+    else
+        Inds=(iter-1)*100000+1:iter*100000;
+        CO2SetSub=interp1(CO2Rec(:,1),CO2Rec(:,1+AtmCO2Trajectory),Dates(Inds,:)-SFs.SFs(Inds,1,1)*[1:500])';
+        CO2Set(Inds,:)=CO2SetSub'*Ventilation';
+    end
+end
 Age=(SFs.SFs(:,1,1)*[1:500])*Ventilation';
 
 % Vapor correction term
